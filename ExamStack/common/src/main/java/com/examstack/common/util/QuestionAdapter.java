@@ -8,7 +8,9 @@ import com.examstack.common.domain.question.QuestionContent;
 import com.examstack.common.domain.question.QuestionQueryResult;
 import com.examstack.common.util.xml.Object2Xml;
 import com.google.gson.Gson;
-
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 
 public class QuestionAdapter {
@@ -71,6 +73,10 @@ public class QuestionAdapter {
 	 */
 	public String getStringFromXML() {
 		StringBuilder sb = new StringBuilder();
+		Gson gson = new Gson();
+		sb.append("<json>");
+		sb.append(gson.toJson(questionQueryResult));
+		sb.append("</json>");
 
 		switch (questionQueryResult.getQuestionTypeId()) {
 		case 1:
@@ -388,6 +394,11 @@ public class QuestionAdapter {
 
 	public String getReportStringFromXML(){
 		StringBuilder sb = new StringBuilder();
+
+		Gson gson = new Gson();
+		sb.append("<json>");
+		sb.append(gson.toJson(questionQueryResult));
+		sb.append("</json>");
 
 		switch (questionQueryResult.getQuestionTypeId()) {
 		case 1:
@@ -721,6 +732,11 @@ public class QuestionAdapter {
 	public String getStringFromXML(boolean showAnswer, boolean showPoint,
 			boolean showAnalysis) {
 		StringBuilder sb = new StringBuilder();
+
+		Gson gson = new Gson();
+		sb.append("<json>");
+		sb.append(gson.toJson(questionQueryResult));
+		sb.append("</json>");
 
 		switch (questionQueryResult.getQuestionTypeId()) {
 		case 1:
@@ -1067,6 +1083,10 @@ public class QuestionAdapter {
 
 	public String getUserExamPaper() {
 		StringBuilder sb = new StringBuilder();
+		Gson gson = new Gson();
+		sb.append("<json>");
+		sb.append(gson.toJson(questionQueryResult));
+		sb.append("</json>");
 
 		switch (questionQueryResult.getQuestionTypeId()) {
 		case 1:

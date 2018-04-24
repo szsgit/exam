@@ -43,27 +43,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	public ExamService examService;
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-		String datatype = request.getParameter("datatype");
 		String username = this.obtainUsername(request);
 		String password = this.obtainPassword(request);
 
-		if("json".equals(datatype)){
-			UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken("student", "123456");
-			this.setDetails(request, authRequest);
-			Authentication authentication = null;
-			try {
-				authentication = this.getAuthenticationManager().authenticate(authRequest);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				throw new AuthenticationServiceException("用户名密码错误！");
-			}
-			UserInfo userDetails = (UserInfo)authentication.getPrincipal();
-
-			if(!userDetails.getRolesName().contains("ROLE_STUDENT")){
-				throw new AuthenticationServiceException("管理用户请从后台管理页面登录！");
-			}
-			return authentication;
-		}
 
 		String seriNo = this.obtainSeriNoParameter(request);
 
